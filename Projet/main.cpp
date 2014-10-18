@@ -12,12 +12,14 @@ const uint8_t V1V2 = GpioPin::PIN_18;
 
 int main()
 {
+  std::cout << "Setup GPIO..." << std::endl;
   setupGpio(R1R2, GpioDirection::OUTPUT);
   setupGpio(V3V4, GpioDirection::OUTPUT);
   setupGpio(J3J4, GpioDirection::OUTPUT);
   setupGpio(R3R4, GpioDirection::OUTPUT);
   setupGpio(J1J2, GpioDirection::OUTPUT);
   setupGpio(V1V2, GpioDirection::OUTPUT);
+  std::cout << "Done, starting loop." << std::endl;
 
   while (true)
   {
@@ -26,24 +28,28 @@ int main()
     setGpio(R3R4, GpioState::OFF);
     setGpio(V3V4, GpioState::ON);
 
-    std::this_thread::sleep_for(std::chrono::seconds(15));
+    //std::this_thread::sleep_for(std::chrono::seconds(15));
+    std::this_thread::sleep_for(std::chrono::seconds(5));
 
     setGpio(J3J4, GpioState::ON);
     setGpio(V3V4, GpioState::OFF);
 
-    std::this_thread::sleep_for(std::chrono::seconds(3));
+    //std::this_thread::sleep_for(std::chrono::seconds(3));
+    std::this_thread::sleep_for(std::chrono::seconds(1));
 
     setGpio(R3R4, GpioState::ON);
     setGpio(J3J4, GpioState::OFF);
     setGpio(V1V2, GpioState::ON);
     setGpio(R1R2, GpioState::OFF);
 
-    std::this_thread::sleep_for(std::chrono::seconds(25));
+    //std::this_thread::sleep_for(std::chrono::seconds(25));
+    std::this_thread::sleep_for(std::chrono::seconds(5));
 
     setGpio(J1J2, GpioState::ON);
     setGpio(V1V2, GpioState::OFF);
 
-    std::this_thread::sleep_for(std::chrono::seconds(3));
+    //std::this_thread::sleep_for(std::chrono::seconds(3));
+    std::this_thread::sleep_for(std::chrono::seconds(1));
   }
 
   return 0;
